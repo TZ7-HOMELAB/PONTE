@@ -22,7 +22,12 @@ async function initializeClient() {
   }
 }
 
-initializeClient();
+const initialization = initializeClient();
+
+export async function waitForSupabase() {
+  await initialization;
+  return getSupabase();
+}
 
 export function getSupabase() {
   if (client) return client;
